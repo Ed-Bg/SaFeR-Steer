@@ -1,109 +1,57 @@
-# Anonymous Submission Checklist for ICML 2026
+# Anonymous Submission - ICML 2026
 
-This repository is prepared for **anonymous submission** to ICML 2026.
+## ⚠️ Important Notice
 
-## ✅ Completed Anonymization
+This is a **skeleton codebase** for anonymous review. To protect against potential misuse:
 
-| Item | Status | Notes |
-|------|--------|-------|
-| Author names | ✅ Removed | `setup.py` uses "Anonymous" |
-| Email addresses | ✅ Removed | Uses `anonymous@example.com` |
-| Institution names | ✅ Removed | No affiliations present |
-| Personal GitHub usernames | ✅ Removed | All `TODO(username)` cleaned |
-| Volcengine/Bytedance GitHub links | ✅ Removed | Replaced with anonymous URLs |
-| API keys | ✅ Secured | Environment variables only |
-| Local file paths | ✅ Removed | No hardcoded `/home/`, `/usb/` paths |
-| IP addresses | ✅ None | No hardcoded IPs |
+1. **Core implementations are withheld** - replaced with `NotImplementedError`
+2. **Detailed prompts are redacted** - placeholders reference paper appendix
+3. **Datasets are not included** - will be released upon acceptance
 
-## ⚠️ Important Notes
+## What Reviewers Can Verify
 
-### Third-Party Copyrights (Retained)
-The `verl/` directory contains code from open-source projects with their original Apache 2.0 copyright headers. These are **retained as required by the license** and do not reveal author identity:
-- SGLang Team (Apache 2.0)
-- Bytedance Ltd. (Apache 2.0) - This is the verl framework, not the paper authors
-- PRIME team (Apache 2.0)
-- PyTorch/HuggingFace references (for algorithm implementations)
+✅ **Architecture design** - Class structures and interfaces
+✅ **Hyperparameters** - Training configs match paper Table 5
+✅ **Methodology** - Docstrings explain the approach
+✅ **Reproducibility claims** - All settings documented
 
-### Optional Tracking Backend
-`verl/utils/tracking.py` includes optional `volcengine_ml_platform` support. This is an enterprise feature from the verl framework and:
-- Only activates if user explicitly sets `vemlp_wandb` as tracking backend
-- Does not reveal paper authorship
-- Can be safely ignored for reproducibility
+## What's Withheld
 
-## Before Uploading
+❌ Full implementation of TCSR aggregation
+❌ Safety Tutor prompt templates  
+❌ Data construction prompts
+❌ Complete evaluation pipeline
+❌ STEER-SFT/RL/Bench datasets
 
-### 1. Final Verification
-```bash
-cd SaFeR-Steer
+## Post-Acceptance Release Plan
 
-# Check for personal identifiers
-grep -ri "your-name\|your-institution" . --include="*.py" --include="*.yaml"
+Upon paper acceptance, we will release:
 
-# Check for personal GitHub usernames (should return empty)
-grep -ri "zhangchi\|gmsheng\|wangkun" . --include="*.py" --include="*.yaml"
+1. **Complete source code** with all implementations
+2. **STEER-SFT dataset** (6,000 samples)
+3. **STEER-RL dataset** (2,000 samples)
+4. **STEER-Bench** evaluation benchmark
+5. **Model checkpoints** for reproducibility
+6. **Detailed documentation** and tutorials
 
-# Check for volcengine GitHub (should return empty)
-grep -r "github.com/volcengine" . --include="*.py" --include="*.yaml" --include="*.md"
+## File Statistics
 
-# Check for hardcoded paths (should return empty)
-grep -rE "/home/[a-z]+|/usb/" . --include="*.py" --include="*.yaml" --include="*.sh"
-```
+| Category | Count | Notes |
+|----------|-------|-------|
+| Python files | ~20 | Skeleton interfaces |
+| YAML configs | 3 | Full hyperparameters |
+| Shell scripts | 4 | Usage examples |
 
-### 2. Remove Empty Directories (Optional)
-```bash
-find . -type d -empty -delete
-```
-
-### 3. Verify No Large Data Files
-```bash
-find . -size +5M -type f
-```
-
-## Upload Instructions
-
-### Option 1: Anonymous GitHub (Recommended)
-1. Go to https://anonymous.4open.science/
-2. Create new anonymous repository
-3. Upload the `SaFeR-Steer` directory
-4. Copy the anonymous URL for your paper
-
-### Option 2: OpenReview Supplementary
-1. Zip the repository: `zip -r SaFeR-Steer.zip SaFeR-Steer -x "*.git*"`
-2. Upload to OpenReview as supplementary material
-
-## Environment Setup for Reviewers
+## Verification
 
 ```bash
-# Clone repository
-git clone https://anonymous.4open.science/r/SaFeR-Steer
+# Verify no sensitive information
+grep -r "your-name\|your-email" . --include="*.py"  # Should be empty
 
-# Install dependencies
-cd SaFeR-Steer
-pip install -r requirements.txt
-
-# Set required environment variables
-export JUDGE_API_BASE_URL="https://api.openai.com/v1"
-export JUDGE_API_KEY="your-api-key"
-export CUDA_VISIBLE_DEVICES="0,1,2,3"
+# Verify implementation is withheld
+grep -r "NotImplementedError" . --include="*.py"    # Should show placeholders
 ```
 
-## Directory Structure
+## Contact
 
-```
-SaFeR-Steer/
-├── data_construction/     # Stage I: Data synthesis
-├── training/
-│   ├── sft/              # Stage II: SFT config
-│   └── grpo/             # Stage III: GRPO prompts
-├── evaluation/           # Multi-turn evaluation
-├── verl/                 # GRPO training framework
-├── configs/              # Benchmark & model configs
-├── scripts/              # Run scripts
-└── examples/             # Usage examples
-```
-
-## Reproducibility
-
-- **STEER-SFT/RL/Bench datasets**: Will be released upon acceptance
-- **Model checkpoints**: Download links provided upon acceptance
-- **Hardware**: 8× A100 80GB GPUs recommended
+Questions during review can be directed through OpenReview.

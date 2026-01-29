@@ -1,66 +1,53 @@
-### SaFeR-Steer SFT Training Configuration
-### For use with LLaMA-Factory (https://github.com/hiyouga/LLaMA-Factory)
+# SFT Configuration for SaFeR-Steer Stage II
+# Uses LLaMA-Factory framework
+# Full configuration - see paper Table 5 for hyperparameters
 
 ### Model Configuration
 model_name_or_path: Qwen/Qwen2.5-VL-7B-Instruct
-image_max_pixels: 262144
-video_max_pixels: 16384
-trust_remote_code: true
+image_max_pixels: 401408
 
-### Training Method
+### Training Stage
 stage: sft
-do_train: true
 finetuning_type: full
+
+### Vision Tower Settings
 freeze_vision_tower: true
-freeze_multi_modal_projector: true
+freeze_multi_modal_projector: false
 freeze_language_model: false
+
+### Distributed Training
 deepspeed: examples/deepspeed/ds_z3_config.json
 
-### Dataset Configuration
-dataset: steer_sft  # Register your dataset in data/dataset_info.json
+### Dataset
+dataset: steer_sft  # STEER-SFT dataset (6,000 samples)
 template: qwen2_vl
 cutoff_len: 32768
 max_samples: 100000
-preprocessing_num_workers: 16
+preprocessing_num_workers: 8
 dataloader_num_workers: 4
 
-### System Prompt (Think-Answer Format)
-default_system: |
-  You are a helpful AI assistant.
-  Please read the user's question and follow the steps below to answer:
-  1. Think step-by-step about the reasoning process. Enclose your thoughts between <thinking> and </thinking>.
-  2. Then, provide the final answer clearly. Enclose it between <answer> and </answer>.
-  
-  Format:
-  <thinking>
-  Your detailed reasoning steps here.
-  </thinking>
-  <answer>
-  Final answer here.
-  </answer>
-
-### Output Configuration
-output_dir: saves/safer-steer-7b/sft
-logging_steps: 10
-save_strategy: epoch
+### Output
+output_dir: outputs/safer_steer_sft
+logging_steps: 1
+save_strategy: steps
+save_steps: 200
 plot_loss: true
 overwrite_output_dir: true
-save_only_model: false
-report_to: tensorboard  # choices: [none, wandb, tensorboard, swanlab, mlflow]
+save_only_model: true
+report_to: wandb
 
-### Training Hyperparameters
+### Hyperparameters (Table 5)
 per_device_train_batch_size: 1
-gradient_accumulation_steps: 4
+gradient_accumulation_steps: 8
 learning_rate: 1.0e-5
-num_train_epochs: 2.0
+num_train_epochs: 2
 lr_scheduler_type: cosine
 warmup_ratio: 0.1
 bf16: true
 ddp_timeout: 180000000
-resume_from_checkpoint: null
 
-### Evaluation (Optional)
-val_size: 0.1
+### Validation
+val_size: 0.01
 per_device_eval_batch_size: 1
 eval_strategy: steps
-eval_steps: 500
+eval_steps: 200
