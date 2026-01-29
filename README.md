@@ -1,10 +1,6 @@
 # SaFeR-Steer
 
-**S**afety **a**lignment with **Fe**edback **R**einforcement via **Steer**ing
 
-> 🔒 **Anonymous Submission to ICML 2026**
-> 
-> ⚠️ **Note**: This is a **skeleton codebase** for anonymous review. Core implementations are withheld to protect against misuse during the review period. Full code will be released upon paper acceptance.
 
 ## Overview
 
@@ -32,17 +28,6 @@ SaFeR-Steer/
 ├── scripts/                 # Run scripts (usage examples)
 └── configs/                 # Benchmark & model configs
 ```
-
-## What's Included
-
-| Component | Status | Description |
-|-----------|--------|-------------|
-| Pipeline interfaces | ✅ Skeleton | Class/function signatures with docstrings |
-| Hyperparameters | ✅ Full | Training configs from paper Table 5 |
-| Method descriptions | ✅ Full | Detailed docstrings explaining methodology |
-| Core implementations | ❌ Withheld | Will be released upon acceptance |
-| Prompts | ❌ Withheld | See paper Appendix E for examples |
-| Datasets | ❌ Withheld | STEER-SFT/RL/Bench released upon acceptance |
 
 ## Installation
 
