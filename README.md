@@ -14,15 +14,15 @@ SaFeR-Steer is a three-stage framework for multi-turn multimodal LLM safety alig
 
 ```
 SaFeR-Steer/
-├── data_construction/       # Stage I: Data synthesis [SKELETON]
+├── data_construction/       # Stage I: Data synthesis 
 │   ├── pipeline.py         # Main pipeline interface
 │   └── prompts/            # Prompt templates [WITHHELD]
 ├── training/
 │   ├── sft/                # Stage II: SFT config
-│   └── grpo/               # Stage III: GRPO prompts [WITHHELD]
-├── evaluation/              # Multi-turn evaluation [SKELETON]
+│   └── grpo/               # Stage III: GRPO prompts 
+├── evaluation/              # Multi-turn evaluation 
 │   └── multi_turn/         # Inference, evaluation, aggregation
-├── verl/                    # GRPO training framework [SKELETON]
+├── verl/                    # GRPO training framework 
 │   ├── interactions/       # Safety Tutor interaction
 │   └── utils/              # TCSR reward aggregation
 ├── scripts/                 # Run scripts (usage examples)
