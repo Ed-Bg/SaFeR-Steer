@@ -75,36 +75,6 @@ export JUDGE_API_KEY="your-api-key"
 bash scripts/run_evaluation.sh
 ```
 
-## Key Hyperparameters (Table 5)
-
-### SFT (Stage II)
-| Parameter | Value |
-|-----------|-------|
-| Learning rate | 1e-5 |
-| Batch size | 8 |
-| Epochs | 2 |
-| Dataset size | 6,000 |
-
-### GRPO (Stage III)
-| Parameter | Value |
-|-----------|-------|
-| Learning rate | 1e-6 |
-| Batch size | 64 |
-| Rollouts per prompt (K) | 5 |
-| KL penalty (β) | 0.1 |
-| TCSR α | 0.3 |
-| Dataset size | 2,000 |
-
-## Citation
-
-```bibtex
-@inproceedings{anonymous2026safersteer,
-  title={SaFeR-Steer: Safety Alignment with Feedback Reinforcement via Steering for Multi-turn Multimodal LLMs},
-  author={Anonymous},
-  booktitle={ICML},
-  year={2026}
-}
-```
 
 ## License
 
