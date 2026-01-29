@@ -166,7 +166,7 @@ After training, merge the FSDP checkpoints into a HuggingFace model:
 
 ```bash
 # Set checkpoint directory
-export CHECKPOINT_DIR=checkpoints/safedy_rl/safedy_multiturn_training
+export CHECKPOINT_DIR=checkpoints/
 export OUTPUT_DIR=output/merged_model
 
 # Run merging
@@ -210,24 +210,3 @@ export MODEL_PATH=/path/to/your/model
 # Start container
 bash run_docker.sh
 ```
-
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@inproceedings{safedy2026,
-  title={SaFeR-Steer: Safe Multi-turn Reinforcement Learning for LLMs},
-  author={Anonymous},
-  booktitle={ICML},
-  year={2026}
-}
-```
-
-## License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-This codebase is built upon [verl](https://github.com/volcengine/verl), a flexible and efficient RL training library for LLMs.
