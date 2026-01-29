@@ -1,4 +1,4 @@
-# Copyright 2024 Bytedance Ltd. and/or its affiliates
+# Copyright 2024 Anonymous Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -83,10 +83,10 @@ setup(
     version=__version__,
     package_dir={"": "."},
     packages=find_packages(where="."),
-    url="https://github.com/volcengine/verl",
+    url="https://anonymous.4open.science/r/SaFeR-Steer",
     license="Apache 2.0",
-    author="Bytedance - Seed - MLSys",
-    author_email="zhangchi.usc1992@bytedance.com, gmsheng@connect.hku.hk",
+    author="Anonymous",
+    author_email="anonymous@example.com",
     description="verl: Volcano Engine Reinforcement Learning for LLM",
     install_requires=install_requires,
     extras_require=extras_require,

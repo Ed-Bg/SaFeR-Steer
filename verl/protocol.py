@@ -319,7 +319,7 @@ def collate_fn(x: list["DataProtoItem"]):
 
 @dataclass
 class DataProtoItem:
-    # TODO(zhangchi.usc1992) add consistency check
+    # TODO: add consistency check
     batch: TensorDict = None
     non_tensor_batch: dict = field(default_factory=dict)
     meta_info: dict = field(default_factory=dict)
@@ -618,7 +618,7 @@ class DataProto:
         Returns:
             DataProto: the DataProto with the selected batch_keys and meta_info_keys
         """
-        # TODO (zhangchi.usc1992) whether to copy
+        # TODO: whether to copy
         if batch_keys is not None:
             batch_keys = tuple(batch_keys)
             sub_batch = self.batch.select(*batch_keys)
