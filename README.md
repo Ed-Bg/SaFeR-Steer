@@ -32,7 +32,7 @@ SaFeR-Steer/
 ## Installation
 
 ```bash
-git clone https://anonymous.4open.science/r/SaFeR-Steer
+git clone https://github.com/Ed-Bg/SaFeR-Steer
 cd SaFeR-Steer
 pip install -r requirements.txt
 ```
@@ -61,10 +61,5 @@ bash scripts/run_evaluation.sh
 ```
 
 
-## License
-
-Apache License 2.0
-
----
 
 *Full implementation will be released upon paper acceptance.*
